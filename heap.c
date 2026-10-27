@@ -10,12 +10,14 @@ static void sink(Heap *p, int);
 */
 int less(const Msg *a, const Msg *b)
 {
-        if(a < b){
-                return 1;
-        }
-        else{
-                return 0;
-        }
+    if (a->priority < b->priority)
+        return 1;
+
+    if (a->priority == b->priority &&
+        a->time > b->time)
+        return 1;
+
+    return 0;
 }
 
 /*
