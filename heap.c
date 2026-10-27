@@ -38,7 +38,7 @@ void insert(Heap *p, const Msg x)
  */
 static void swim(Heap *p, int k)
 {
-        while(k>1 && less( &p->h_arr[k/2], &p->h_arr[k])){
+        while(k>1 && less( &p->h_arr[k], &p->h_arr[k/2])){
                 Msg temp = p->h_arr[k];
                 p->h_arr[k] = p->h_arr[k / 2];
                 p->h_arr[k / 2] = temp;
@@ -56,7 +56,7 @@ static void sink(Heap *p, int k)
 
         while(k < p->h_len && less( &p->h_arr[k*2], &p->h_arr[k])){
                 int j = k*2;
-                if(less( &p->h_arr[j], &p->h_arr[k]) && less( &p->h_arr[j], &p->h_arr[j+1])){
+                if(less( &p->h_arr[j+1], &p->h_arr[j])){
                         j++;
                 }
                 if(!less(&p->h_arr[k], &p->h_arr[j])){
